@@ -1,5 +1,17 @@
 # REST-API сервер на C++17 с SQLite и RBAC
 
+## Для преподавателя
+
+В проект выполнен и встроен **вариант 20 — оценщик валютных рисков при операциях**.
+
+- [Отчёт с результатами и скриншотами](docs/report_variant20_with_screenshots.docx)
+- [Актуальное ТЗ индивидуального задания](src/modules/individual/README.md)
+- [Реализация варианта 20](src/modules/individual/variant_mine.hpp)
+- [Алгоритм](docs/variant20_algorithm.md) и [блок-схема](docs/variant20_flowchart.svg)
+- [Тестовые сценарии](docs/variant20_test_cases.md)
+
+Маршрут варианта: `POST /api/v1.1/works/calc-individual`.
+
 Многопоточный REST-сервер для статистического анализа числовых
 последовательностей и решения индивидуальных расчётных задач.
 
