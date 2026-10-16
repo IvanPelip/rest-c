@@ -45,3 +45,14 @@ rules.ninja
 data/users.txt
 build.ninja
 data/rest.db
+.backup-*/
+
+# Временные файлы подготовки отчёта
+docs/report_render/
+docs/report_variant20_unpacked/
+docs/~$*.docx
+docs/report_variant20.docx
+docs/create_report.py
+docs/insert_report_screenshots.py
+docs/render_flowchart.mjs
+docs/variant20_flowchart.png

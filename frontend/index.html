@@ -352,11 +352,10 @@ const PRESETS = {
   "calc-ind": {
     method: "POST", url: API + "/works/calc-individual",
     body: JSON.stringify({
-      marketing_spend: 10000.0,
-      attributed_revenue: 25000.0,
-      agency_fee: 1500.0,
-      production_cost: 500.0,
-      period_days: 30
+      contract_value_foreign_currency: 10000.0,
+      current_fx_rate: 90.0,
+      forecasted_volatility_percentage: 10.0,
+      hedging_cost_percentage: 2.0
     }, null, 2)
   },
   "works-hist-ind": {

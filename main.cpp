@@ -36,6 +36,9 @@ int main() {
 
     // ---- 5. Единый формат ошибок ----
     svr.set_error_handler([](const httplib::Request& req, httplib::Response& res) {
+        // Роут может сам сформировать понятную ошибку валидации.
+        // Не заменяем её общим сообщением middleware.
+        if (!res.body.empty()) return;
         JObj o;
         o.int_("status", res.status);
         o.str("error", "Request failed");

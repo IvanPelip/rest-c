@@ -11,6 +11,8 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 # Собираем все .cpp и .hpp файлы проекта
 # ----------------------------------------------------------------------------
 file(GLOB_RECURSE SOURCES "main.cpp" "src/**/*.hpp" "src/**/*.cpp")
+# Резервные копии в корне проекта не являются исходным кодом.
+list(FILTER SOURCES EXCLUDE REGEX "/\\.backup-")
 add_executable(rest_server ${SOURCES})
 
 # ----------------------------------------------------------------------------
@@ -25,6 +27,8 @@ target_link_libraries(rest_server PRIVATE Threads::Threads)
 if(WIN32)
     # Windows: сокеты линкуются отдельно
     target_link_libraries(rest_server PRIVATE ws2_32)
+    # cpp-httplib использует API Windows 10 (CreateFile2).
+    target_compile_definitions(rest_server PRIVATE _WIN32_WINNT=0x0A00 WINVER=0x0A00)
 else()
     # Linux / macOS: системная SQLite
     find_package(SQLite3 REQUIRED)

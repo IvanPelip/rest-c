@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="1510" viewBox="0 0 1100 1510">
+  <style>
+    .shape { fill: #fff; stroke: #152238; stroke-width: 2.5; }
+    .process { fill: #eaf3ff; stroke: #152238; stroke-width: 2.5; }
+    .io { fill: #f5f9ff; stroke: #152238; stroke-width: 2.5; }
+    .decision { fill: #fff6d8; stroke: #152238; stroke-width: 2.5; }
+    text { font-family: Arial, sans-serif; fill: #152238; text-anchor: middle; font-size: 20px; }
+    .small { font-size: 17px; }
+    .caption { font-size: 25px; font-weight: bold; }
+    .arrow { fill: none; stroke: #152238; stroke-width: 2.5; marker-end: url(#arrow); }
+    .label { font-size: 17px; font-weight: bold; }
+  </style>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#152238"/></marker>
+  </defs>
+  <text x="550" y="45" class="caption">Блок-схема алгоритма: вариант 20 — оценщик валютных рисков</text>
+
+  <rect class="shape" x="425" y="75" width="250" height="62" rx="31"/>
+  <text x="550" y="114">Начало</text>
+  <path class="arrow" d="M550 137 L550 185"/>
+
+  <polygon class="io" points="305,185 730,185 680,270 255,270"/>
+  <text x="493" y="220">Получить 4 входных параметра</text>
+  <text x="493" y="246" class="small">из JSON-запроса</text>
+  <path class="arrow" d="M493 270 L493 315"/>
+
+  <polygon class="decision" points="493,315 725,400 493,485 261,400"/>
+  <text x="493" y="390">Все поля переданы</text>
+  <text x="493" y="416">и являются числами?</text>
+  <path class="arrow" d="M493 485 L493 530"/>
+  <text x="510" y="515" class="label">Да</text>
+  <path class="arrow" d="M261 400 L105 400 L105 1300 L305 1300"/>
+  <text x="178" y="385" class="label">Нет</text>
+
+  <polygon class="decision" points="493,530 765,630 493,730 221,630"/>
+  <text x="493" y="620">Значения соответствуют</text>
+  <text x="493" y="646">ограничениям варианта?</text>
+  <path class="arrow" d="M493 730 L493 775"/>
+  <text x="510" y="760" class="label">Да</text>
+  <path class="arrow" d="M765 630 L925 630 L925 1300 L795 1300"/>
+  <text x="842" y="615" class="label">Нет</text>
+
+  <rect class="process" x="270" y="775" width="446" height="100"/>
+  <text x="493" y="815" class="small">local = contract_value_foreign_currency</text>
+  <text x="493" y="842" class="small">× current_fx_rate</text>
+  <path class="arrow" d="M493 875 L493 915"/>
+
+  <rect class="process" x="270" y="915" width="446" height="100"/>
+  <text x="493" y="955" class="small">risk = local × volatility / 100</text>
+  <text x="493" y="982" class="small">net = local − local × hedging / 100</text>
+  <path class="arrow" d="M493 1015 L493 1075"/>
+
+  <polygon class="io" points="305,1075 730,1075 680,1160 255,1160"/>
+  <text x="493" y="1110">Вернуть JSON с local, risk, net</text>
+  <text x="493" y="1136" class="small">и сохранить успешный расчёт в историю</text>
+  <path class="arrow" d="M493 1160 L493 1210"/>
+
+  <rect class="shape" x="368" y="1210" width="250" height="62" rx="31"/>
+  <text x="493" y="1249">Конец</text>
+
+  <polygon class="io" points="305,1300 795,1300 745,1385 255,1385"/>
+  <text x="525" y="1350">Вернуть HTTP 400 и JSON с текстом ошибки</text>
+  <path class="arrow" d="M525 1300 L525 1272"/>
+</svg>
